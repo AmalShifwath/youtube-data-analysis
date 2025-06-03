@@ -17,6 +17,7 @@ This project simulates a real-world advertising use case where a client wants to
 
 ## 📁 Project Structure
 youtube-data-analysis/
+
  data/              # Sample data or S3 references
  scripts/           # Lambda ETL, CLI commands
  sql/               # Athena queries
