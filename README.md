@@ -16,14 +16,13 @@ This project simulates a real-world advertising use case where a client wants to
 - **AWS CLI** - programmatic control of cloud resources 
 
 ## 📁 Project Structure
-youtube-data-analysis/
 
- data/              # Sample data or S3 references
- scripts/           # Lambda ETL, CLI commands
- sql/               # Athena queries
- aws_configs/       # IAM, Glue setup notes
- notebooks/         # EDA or analysis scripts
- dashboard/         # Screenshot or live link
+- data/              # Sample data or S3 reference
+- scripts/           # Lambda ETL, CLI commands
+- sql/               # Athena queries
+- aws_configs/       # IAM, Glue setup notes
+- notebooks/         # EDA or analysis scripts
+- dashboard/         # Screenshot or live link
 
 ## 📊 Business Objective
 
