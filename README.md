@@ -9,11 +9,21 @@ This project simulates a real-world advertising use case where a client wants to
 ## 🧰 Tech Stack
 
 - **AWS S3** - raw and clean data storage  
-- **AWS Lambda** - ETL for JSON to Parquet conversion  
-- **AWS Glue** - Data Catalog and schema crawling  
-- **AWS Athena** - SQL-based querying of data  
-- **Python, Pandas, AWS Wrangler** - data transformation  
-- **AWS CLI** - programmatic control of cloud resources 
+- **AWS Lambda and AWS Glue** - ETL for JSON to Parquet conversion, Data Catalog and schema crawling
+- **AWS Athena** - SQL-based querying of data
+- **AWS QuickSight** - Visualize the trends analysis
+- **Python, Pandas, AWS Wrangler** - data transformation
+   
+*Extras* - *IAM Roles, AWS Wrangler, AWS CLI*
+
+## 📊 Sample Insights (from QuickSight)
+
+- 📈 Top 10 trending categories by region
+- ⏱️ Average video duration vs. view count
+- 🌍 Heatmap of upload frequency by country
+- 📆 Weekly trends of video publishing
+
+<sub>*Note: AWS QuickSight dashboards are not public, but visuals and screenshots are available upon request or in this repo.*</sub>
 
 ## 📁 Project Structure
 
