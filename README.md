@@ -16,6 +16,11 @@ This project simulates a real-world advertising use case where a client wants to
    
 *Extras* - *IAM Roles, AWS Wrangler, AWS CLI*
 
+## AWS Data Flow Pipeline Digram
+
+<img src="images/Data%20Flow%20Diagram.png" alt="AWS Data Flow Diagram" width="500"/>
+
+
 ## 📊 Sample Insights (from QuickSight)
 
 -  Top trending and frequency by categories and country
