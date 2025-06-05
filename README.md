@@ -1,4 +1,4 @@
-# YouTube Data Analysis
+# YouTube Data Analysis in AWS
 
 This is an end-to-end data engineering project that uses AWS cloud services to analyze YouTube trending video data across multiple regions.
 
