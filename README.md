@@ -30,6 +30,7 @@ This project simulates a real-world advertising use case where a client wants to
 -  Average video duration vs. view count
 -  Weekly trends of video publishing
 
+
 <sub>*Note: AWS QuickSight dashboards are not public, but visuals and screenshots are available upon request or in this repo.*</sub>
 
 ## 📁 Project Structure
