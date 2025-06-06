@@ -22,17 +22,21 @@ DEFAULT_DATA_QUALITY_RULESET = """
     ]
 """
 
-# Read CSVs from S3 with recursive path (no need for enablePartitionInference)
-AmazonS3rawcsv_node1748991274137 = glueContext.create_dynamic_frame.from_options(
-    format_options={"quoteChar": "\"", "withHeader": True, "separator": ",", "multiLine": "false", "optimizePerformance": False},
-    connection_type="s3",
-    format="csv",
-    connection_options={
-        "paths": ["s3://amal-de-youtube-analysis-raw-dev/raw_statistics_csv/"],
-        "recurse": True
-    },
-    transformation_ctx="AmazonS3rawcsv_node1748991274137"
-)
+# Read CSVs from S3 using Spark for better encoding and error handling
+df = spark.read \
+    .format("csv") \
+    .option("header", "true") \
+    .option("multiLine", "false") \
+    .option("quote", "\"") \
+    .option("sep", ",") \
+    .option("mode", "PERMISSIVE") \
+    .load("s3://amal-de-youtube-analysis-raw-dev/raw_statistics_csv/")
+
+# Add partition_0 from folder path
+df = df.withColumn("partition_0", regexp_extract(input_file_name(), r"raw_statistics_csv/([^/]+)/", 1))
+
+# Convert to DynamicFrame
+AmazonS3rawcsv_node1748991274137 = DynamicFrame.fromDF(df, glueContext, "AmazonS3rawcsv_node1748991274137")
 
 # Apply schema mapping
 ChangeSchema_node1748991832474 = ApplyMapping.apply(
@@ -53,15 +57,11 @@ ChangeSchema_node1748991832474 = ApplyMapping.apply(
         ("comments_disabled", "string", "comments_disabled", "string"),
         ("ratings_disabled", "string", "ratings_disabled", "string"),
         ("video_error_or_removed", "string", "video_error_or_removed", "string"),
-        ("description", "string", "description", "string")
+        ("description", "string", "description", "string"),
+        ("partition_0", "string", "partition_0", "string")
     ],
     transformation_ctx="ChangeSchema_node1748991832474"
 )
-
-# Add partition_0 column from S3 folder name
-df = ChangeSchema_node1748991832474.toDF()
-df = df.withColumn("partition_0", regexp_extract(input_file_name(), r"raw_statistics_csv/([^/]+)/", 1))
-ChangeSchema_node1748991832474 = DynamicFrame.fromDF(df, glueContext, "df_with_partition_0")
 
 # Data Quality Check
 EvaluateDataQuality().process_rows(
@@ -77,7 +77,7 @@ EvaluateDataQuality().process_rows(
     }
 )
 
-# Write to S3 with partitioning by partition_0
+# Write to S3 partitioned by partition_0
 AmazonS3cleanedcsv_node1748991912412 = glueContext.write_dynamic_frame.from_options(
     frame=ChangeSchema_node1748991832474,
     connection_type="s3",

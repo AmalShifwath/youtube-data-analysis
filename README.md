@@ -1,4 +1,4 @@
-# YouTube Data Analysis
+# YouTube Data Analysis in AWS
 
 This is an end-to-end data engineering project that uses AWS cloud services to analyze YouTube trending video data across multiple regions.
 
@@ -16,12 +16,20 @@ This project simulates a real-world advertising use case where a client wants to
    
 *Extras* - *IAM Roles, AWS Wrangler, AWS CLI*
 
+## AWS Data Flow Pipeline Digram
+
+<img src="images/Data%20Flow%20Diagram.png" alt="AWS Data Flow Diagram" width="500"/>
+
+
 ## 📊 Sample Insights (from QuickSight)
 
-- 📈 Top 10 trending categories by region
-- ⏱️ Average video duration vs. view count
-- 🌍 Heatmap of upload frequency by country
-- 📆 Weekly trends of video publishing
+-  Top trending and frequency by categories and country
+
+![YouTube Dashboard](images/quicksight-viz-1.png)
+
+-  Average video duration vs. view count
+-  Weekly trends of video publishing
+
 
 <sub>*Note: AWS QuickSight dashboards are not public, but visuals and screenshots are available upon request or in this repo.*</sub>
 
