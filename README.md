@@ -4,7 +4,7 @@ This is an end-to-end data engineering project that uses AWS cloud services to a
 
 ## 📌 Overview
 
-This project simulates a real-world advertising use case where a client wants to understand video trends before investing in YouTube campaigns. The goal is to extract, clean, catalog, and analyze YouTube data to uncover factors that influence video popularity.
+This project simulates a real-world advertising use case where a client wants to understand video trends before investing in YouTube campaigns. The goal is to extract, clean, catalog, and analyze YouTube data from <a href="https://www.kaggle.com/datasets/datasnaek/youtube-new/data" target="_blank">Kaggle</a> to uncover factors that influence video popularity.
 
 ## 🧰 Tech Stack
 
